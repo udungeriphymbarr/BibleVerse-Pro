@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Basic Meta -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO -->
+    <title>BibleVerse Pro | Modern Bible Study App</title>
+    <meta
+      name="description"
+      content="BibleVerse Pro is a modern Bible study Progressive Web App built with HTML, CSS and JavaScript."
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Manifest -->
+    <link rel="manifest" href="manifest.json" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/variables.css" />
+
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+
+  <body>
+    <!-- HEADER -->
+
+    <header class="header">
+      <div class="container">
+        <nav class="navbar">
+          <!-- Logo -->
+
+          <a href="#home" class="logo">
+            <span class="logo-icon">📖</span>
+
+            <span class="logo-text">
+              BibleVerse
+
+              <span class="logo-highlight">Pro</span>
+            </span>
+          </a>
+
+          <!-- Desktop Navigation -->
+
+          <ul class="nav-menu">
+            <li>
+              <a href="#home" class="nav-link active"> Home </a>
+            </li>
+
+            <li>
+              <a href="#reader" class="nav-link"> Reader </a>
+            </li>
+
+            <li>
+              <a href="#features" class="nav-link"> Features </a>
+            </li>
+
+            <li>
+              <a href="#faq" class="nav-link"> FAQ </a>
+            </li>
+          </ul>
+
+          <!-- Right Side -->
+
+          <div class="nav-actions">
+            <button id="installBtn" class="btn-install">Install App</button>
+
+            <button id="menuBtn" class="menu-btn" aria-label="Open Navigation">
+              ☰
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+
+    <main>
+      <!-- ==========================
+         HERO
+    ========================== -->
+
+      <section id="home" class="hero">
+        <div class="container">
+          <div class="hero-grid">
+            <!-- Left Content -->
+
+            <div class="hero-content">
+              <span class="hero-badge"> ✨ Modern Bible Study Platform </span>
+
+              <h1>Read. Study. Grow.</h1>
+
+              <p class="hero-description">
+                BibleVerse Pro helps you search, read and study God's Word
+                beautifully with a modern experience built for every believer.
+              </p>
+
+              <div class="hero-buttons">
+                <a href="#reader" class="btn btn-primary"> 📖 Start Reading </a>
+
+                <a href="#features" class="btn btn-outline">
+                  Explore Features
+                </a>
+              </div>
+
+              <div class="hero-stats">
+                <div class="stat">
+                  <h3>66</h3>
+
+                  <p>Books</p>
+                </div>
+
+                <div class="stat">
+                  <h3>3+</h3>
+
+                  <p>Translations</p>
+                </div>
+
+                <div class="stat">
+                  <h3>PWA</h3>
+
+                  <p>Offline Ready</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Content -->
+
+            <div class="hero-search">
+              <div class="search-card">
+                <div class="search-header">
+                  <h2>📖 Quick Bible Search</h2>
+
+                  <p>Search any scripture instantly.</p>
+                </div>
+
+                <div id="dailyVerse" class="daily-verse">
+                  Loading today's verse...
+                </div>
+
+                <div class="search-form">
+                  <label for="reference"> Bible Reference </label>
+
+                  <input
+                    id="reference"
+                    type="text"
+                    placeholder="e.g. John 3:16"
+                  />
+
+                  <label for="translation"> Translation </label>
+
+                  <select id="translation">
+                    <option value="kjv">King James Version</option>
+
+                    <option value="niv">New International Version</option>
+
+                    <option value="esv">English Standard Version</option>
+                  </select>
+
+                  <button id="searchBtn" class="btn btn-primary">
+                    Read Scripture
+                  </button>
+                </div>
+
+                <div class="quick-tools">
+                  <button id="bookmarkBtn">⭐ Bookmarks</button>
+
+                  <button id="audioBtn">🔊 Audio</button>
+
+                  <button id="themeBtn">🌙 Theme</button>
+
+                  <button id="noteBtn">📝 Notes</button>
+                </div>
+
+                <div class="recent-searches">
+                  <h4>Recent Searches</h4>
+
+                  <div id="historyList"></div>
+                  <div class="history-footer">
+                    <button id="clearHistoryBtn">🗑️ Clear History</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scripture Result -->
+
+      <section id="reader" class="reader">
+        <div class="container">
+          <div id="loading" class="loading hidden">Loading Scripture...</div>
+
+          <div id="error" class="error hidden"></div>
+
+          <div id="verses" class="verse-container"></div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+     BOOKMARK MODAL
+========================================== -->
+
+      <div id="bookmarkModal" class="modal hidden">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>⭐ My Bookmarks</h2>
+
+            <button id="closeBookmarkModal">✕</button>
+          </div>
+
+          <div id="bookmarkList"></div>
+        </div>
+      </div>
+
+      <!-- ==========================================
+     NOTES MODAL
+========================================== -->
+
+      <div id="notesModal" class="modal hidden">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Verse Notes</h2>
+
+            <button id="closeNotes">✕</button>
+          </div>
+
+          <textarea
+            id="noteInput"
+            placeholder="Write your thoughts about this scripture..."
+          >
+          </textarea>
+
+          <div class="modal-actions">
+            <button id="saveNoteBtn">💾 Save Note</button>
+
+            <button id="deleteNoteBtn" class="btn-danger">
+              🗑 Delete Note
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==========================================
+     FEATURES
+========================================== -->
+
+      <section id="features" class="features">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-tag"> Why BibleVerse Pro? </span>
+
+            <h2>Everything You Need To Study God's Word</h2>
+
+            <p>
+              Powerful tools designed to help you read, study, remember and
+              share Scripture effortlessly.
+            </p>
+          </div>
+
+          <div class="features-grid">
+            <article class="feature-card">
+              <div class="feature-icon">📖</div>
+
+              <h3>Fast Bible Search</h3>
+
+              <p>
+                Search any Bible reference instantly and read in multiple
+                translations.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon">🔊</div>
+
+              <h3>Audio Reading</h3>
+
+              <p>Listen to Scripture with built-in text-to-speech support.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon">⭐</div>
+
+              <h3>Bookmarks</h3>
+
+              <p>Save your favourite verses for quick access later.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon">📝</div>
+
+              <h3>Verse Notes</h3>
+
+              <p>Write personal study notes linked to each Bible passage.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon">🌙</div>
+
+              <h3>Dark Mode</h3>
+
+              <p>Read comfortably during the night with one click.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon">📱</div>
+
+              <h3>Installable App</h3>
+
+              <p>
+                Install BibleVerse Pro on your phone or desktop like a native
+                app.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+<!-- ==========================================
+     FAQ
+========================================== -->
+
+<section id="faq" class="faq">
+
+    <div class="container">
+
+        <div class="section-header">
+
+            <span class="section-tag">
+
+                FAQ
+
+            </span>
+
+            <h2>
+
+                Frequently Asked Questions
+
+            </h2>
+
+            <p>
+
+                Answers to common questions about BibleVerse Pro.
+
+            </p>
+
+        </div>
+
+        <div class="faq-container">
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+
+                    <span>Is BibleVerse Pro free?</span>
+
+                    <span class="faq-icon">+</span>
+
+                </button>
+
+                <div class="faq-answer">
+
+                    <p>
+
+                        Yes. BibleVerse Pro V1 is completely free and can be installed as a Progressive Web App.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+
+                    <span>Can I bookmark verses?</span>
+
+                    <span class="faq-icon">+</span>
+
+                </button>
+
+                <div class="faq-answer">
+
+                    <p>
+
+                        Yes. Save your favourite verses and access them anytime from the bookmarks panel.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+
+                    <span>Does it support Dark Mode?</span>
+
+                    <span class="faq-icon">+</span>
+
+                </button>
+
+                <div class="faq-answer">
+
+                    <p>
+
+                        Absolutely. Switch between light and dark mode with one click.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+
+                    <span>Can I save personal notes?</span>
+
+                    <span class="faq-icon">+</span>
+
+                </button>
+
+                <div class="faq-answer">
+
+                    <p>
+
+                        Yes. Every Bible passage can have its own personal study notes stored locally.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+
+                    <span>Can I install it on my phone?</span>
+
+                    <span class="faq-icon">+</span>
+
+                </button>
+
+                <div class="faq-answer">
+
+                    <p>
+
+                        Yes. BibleVerse Pro is a Progressive Web App and can be installed like a native app.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+    </main>
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <h2>📖 BibleVerse Pro</h2>
+
+            <p>
+              Read. Study. Grow. Beautifully designed Bible study experience
+              built with HTML, CSS and JavaScript.
+            </p>
+
+            <div class="socials">
+              <a href="#">🌐</a>
+
+              <a href="#">📧</a>
+
+              <a href="#">🐙</a>
+            </div>
+          </div>
+
+          <div>
+            <h3>Features</h3>
+
+            <ul>
+              <li>Bible Search</li>
+
+              <li>Daily Verse</li>
+
+              <li>Audio Reader</li>
+
+              <li>Bookmarks</li>
+
+              <li>Verse Notes</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3>Resources</h3>
+
+            <ul>
+              <li>User Guide</li>
+
+              <li>Documentation</li>
+
+              <li>Privacy Policy</li>
+
+              <li>Terms</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3>TeeTechs</h3>
+
+            <p>Building premium web applications that people love.</p>
+
+            <button class="footer-btn">Contact Us</button>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span> © 2026 TeeTechs. </span>
+
+          <span> BibleVerse Pro v1.0 </span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+:root{
+
+    /* Brand */
+
+    --primary:#2563EB;
+    --primary-dark:#1D4ED8;
+
+    --secondary:#7C3AED;
+
+    --accent:#F59E0B;
+
+    /* Neutral */
+
+    --white:#FFFFFF;
+
+    --background:#F8FAFC;
+
+    --surface:#FFFFFF;
+
+    --text:#0F172A;
+
+    --text-light:#64748B;
+
+    --border:#E2E8F0;
+
+    /* Radius */
+
+    --radius:14px;
+
+    --radius-lg:22px;
+
+    /* Shadow */
+
+    --shadow:0 10px 25px rgba(15,23,42,.08);
+
+    /* Layout */
+
+    --container:1200px;
+
+    /* Animation */
+
+    --transition:.3s ease;
+
+    /* Light theme (default) */
+
+    --background:#F8FAFC;
+    --surface:#FFFFFF;
+
+    --text:#0F172A;
+    --text-light:#64748B;
+
+    --border:#E2E8F0;
+
+}
+
+/* ==========================================
+   DARK THEME
+========================================== */
+
+body.dark{
+
+    --background:#0F172A;
+
+    --surface:#1E293B;
+
+    --text:#F8FAFC;
+
+    --text-light:#CBD5E1;
+
+    --border:#334155;
+
+}

@@ -1,0 +1,17 @@
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+# Node
+node_modules/
+
+# Environment
+.env
