@@ -1,4 +1,4 @@
-# 📖 Holy Bible PWA
+# 📖 BibleVerse PRO
 
 A modern **Progressive Web App (PWA)** Bible built with pure HTML, CSS, and JavaScript.
 
