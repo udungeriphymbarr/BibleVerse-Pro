@@ -1,0 +1,163 @@
+@media (max-width: 768px) {
+  .navbar {
+    position: relative;
+  }
+
+  .btn-install {
+    display: none;
+  }
+
+  .menu-btn {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    width: 46px;
+
+    height: 46px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: var(--primary);
+
+    color: #fff;
+
+    font-size: 24px;
+
+    cursor: pointer;
+
+    transition: var(--transition);
+  }
+
+  .menu-btn:hover {
+    background: var(--primary-dark);
+  }
+
+  .nav-menu {
+    position: absolute;
+
+    top: 80px;
+
+    left: 0;
+
+    width: 100%;
+
+    display: none;
+
+    flex-direction: column;
+
+    gap: 0;
+
+    background: #fff;
+
+    border-radius: 0 0 18px 18px;
+
+    overflow: hidden;
+
+    box-shadow: var(--shadow-md);
+
+    border-top: 1px solid var(--border);
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .nav-menu li {
+    width: 100%;
+
+    list-style: none;
+  }
+
+  .nav-menu li a {
+    display: block;
+
+    padding: 18px 25px;
+
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-menu li:last-child a {
+    border-bottom: none;
+  }
+}
+
+
+
+
+
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-content {
+    text-align: center;
+
+    align-items: center;
+  }
+
+  .hero-search {
+    justify-content: center;
+  }
+
+  .hero-content h1 {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 50px 0;
+  }
+
+  .hero-content h1 {
+    font-size: 2.4rem;
+  }
+
+  .hero-stats {
+    justify-content: center;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+  }
+
+  .quick-tools {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========================================
+   STATES
+======================================== */
+
+.hidden {
+  display: none;
+}
+
+.loading {
+  padding: 20px;
+
+  text-align: center;
+
+  color: var(--primary);
+
+  font-weight: 600;
+}
+
+.error {
+  background: #fee2e2;
+
+  color: #b91c1c;
+
+  padding: 16px;
+
+  border-radius: 12px;
+
+  margin-bottom: 20px;
+}

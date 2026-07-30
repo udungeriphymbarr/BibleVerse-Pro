@@ -1,0 +1,93 @@
+/* ==========================
+   HEADER
+========================== */
+
+.header {
+  position: sticky;
+
+  top: 0;
+
+  z-index: 1000;
+
+  background: rgba(255, 255, 255, 0.92);
+
+  backdrop-filter: blur(16px);
+
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar {
+  height: 80px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  font-family: "Poppins", sans-serif;
+
+  font-size: 1.4rem;
+
+  font-weight: 700;
+}
+
+.logo-highlight {
+  color: var(--primary);
+}
+
+.nav-menu {
+  display: flex;
+
+  gap: 32px;
+}
+
+.nav-link {
+  color: var(--text-light);
+
+  transition: var(--transition);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--primary);
+}
+
+.nav-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+.btn-install {
+  border: none;
+
+  background: var(--primary);
+
+  color: white;
+
+  padding: 12px 20px;
+
+  border-radius: 999px;
+}
+
+.menu-btn {
+  display: none;
+
+  border: none;
+
+  background: none;
+
+  font-size: 1.5rem;
+}
+
