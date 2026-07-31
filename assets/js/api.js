@@ -69,27 +69,33 @@ async function loadDailyVerse() {
 async function fetchDailyVerse(reference) {
   try {
     const response = await fetch(
-      `https://bible-api.com/${encodeURIComponent(reference)}`,
+      `${CONFIG.API_URL}/${encodeURIComponent(reference)}`
     );
+
+    if (!response.ok) {
+      throw new Error("Failed to load daily verse.");
+    }
 
     const data = await response.json();
 
-    setDailyVerse(data);
+    // Save to app state
+    dailyVerse = data;
 
+    // Save to localStorage
     localStorage.setItem(
       "dailyVerse",
-
-      JSON.stringify(data),
+      JSON.stringify(data)
     );
 
     localStorage.setItem(
       "dailyVerseDate",
-
-      new Date().toDateString(),
+      new Date().toDateString()
     );
 
+    // Update the UI
     renderDailyVerse();
+
   } catch (error) {
-    console.error(error);
+    console.error("Daily Verse Error:", error);
   }
 }

@@ -41,6 +41,10 @@ function bindEvents() {
 
   deleteNoteBtn.addEventListener("click", deleteNote);
 
+  const notesBtn = document.getElementById("notesBtn");
+
+  notesBtn.addEventListener("click", showNotes);
+
     notesModal.addEventListener("click", function (event) {
     if (event.target === notesModal) {
       closeNotes();
